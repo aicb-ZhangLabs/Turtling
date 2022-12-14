@@ -1,0 +1,1 @@
+python3 main.py --dataset acl --data_path data_acl/ --emb_path embeddings/acl/skipgram_emb_300d.txt --min_df 10 --num_topics 30 --lr 0.0001 --epochs 10 --mode train
