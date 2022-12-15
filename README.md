@@ -9,12 +9,24 @@ Turtling is a time-aware neural topic model with multi-task losses which encoura
 
 # Datasets
 
+The BioWordVec word embeddings can be downloaded with the following link:
+
+https://github.com/ncbi-nlp/BioSentVec
+
 Download the Grant dataset with the following link:
+
+https://drive.google.com/file/d/1AGk8GLMx2bUdzdzMsAdaCUnUjq2ROXEw/view?usp=sharing 
 
 
 # Example
 
-Run Turtling on the Grant dataset by the command below. 
+Move the grant.csv file downloaded in the previous step to scripts/ folder, and run the following command to preprocess the grant dataset.
+
+```
+python data_grants.py
+```
+
+Run Turtling on the processed Grant dataset by the command below. 
 
 ```
 sh grants.sh
