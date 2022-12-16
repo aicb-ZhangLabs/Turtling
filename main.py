@@ -20,7 +20,7 @@ from sklearn.decomposition import PCA
 from torch import nn, optim
 from torch.nn import functional as F
 
-from detm import DETM
+from models import Turtling
 from utils import nearest_neighbors, get_topic_coherence
 
 parser = argparse.ArgumentParser(description='The Embedded Topic Model')
@@ -193,7 +193,7 @@ if args.mode == 'eval':
     ckpt = args.load_from
 else:
     ckpt = os.path.join(args.save_path, 
-        'detm_{}_K_{}_Htheta_{}_Optim_{}_Clip_{}_ThetaAct_{}_Lr_{}_Bsz_{}_RhoSize_{}_L_{}_minDF_{}_trainEmbeddings_{}_divReg_{}_label10'.format(
+        'Grant_{}_K_{}_Htheta_{}_Optim_{}_Clip_{}_ThetaAct_{}_Lr_{}_Bsz_{}_RhoSize_{}_L_{}_minDF_{}_trainEmbeddings_{}_divReg_{}_label10'.format(
         args.dataset, args.num_topics, args.t_hidden_size, args.optimizer, args.clip, args.theta_act, 
             args.lr, args.batch_size, args.rho_size, args.eta_nlayers, args.min_df, args.train_embeddings, args.div_reg))
 
@@ -203,8 +203,8 @@ if args.load_from != '':
     with open(args.load_from, 'rb') as f:
         model = torch.load(f)
 else:
-    model = DETM(args, embeddings)
-print('\nDETM architecture: {}'.format(model))
+    model = Turtling(args, embeddings)
+print('\nArchitecture: {}'.format(model))
 model.to(device)
 
 if args.optimizer == 'adam':
@@ -222,7 +222,7 @@ else:
     optimizer = optim.SGD(model.parameters(), lr=args.lr)
 
 def train(epoch):
-    """Train DETM on data for one epoch.
+    """Train model on data for one epoch.
     """
     model.train()
     acc_loss = 0

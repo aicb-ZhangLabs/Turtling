@@ -10,9 +10,9 @@ from torch import nn
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-class DETM(nn.Module):
+class Turtling(nn.Module):
     def __init__(self, args, embeddings):
-        super(DETM, self).__init__()
+        super(Turtling, self).__init__()
 
         ## define hyperparameters
         self.num_topics = args.num_topics
